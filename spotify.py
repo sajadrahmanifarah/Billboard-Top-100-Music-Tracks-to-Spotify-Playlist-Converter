@@ -4,9 +4,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 redirect_uri = "http://example.com"
-client_id = "dfc9c48063494f66a1b40c6bb9d0892c"
-client_secret = "ed7c324ab9634b0e8a94f06ff9726c63"
-user_id = "s5odus6072jmmvvr3mnqp4no8"
+client_id = "Your Client ID"
+client_secret = "Your Client Secret"
+user_id = "Your User ID"
 date = input("enter date in this format yyyy-mm-dd: ")
 year = date.split('-')[0]
 
@@ -21,8 +21,8 @@ track_id = []
 access = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri,
                       scope="playlist-modify-private", show_dialog=True, cache_path="token.txt")
 login = spotipy.Spotify(auth_manager=access)
-for n in song_titles:
-    show = login.search(q='track:' + f'{n}', type='track')
+for track in song_titles:
+    show = login.search(q='track:' + f'{track}', type='track')
     try:
         track_id.append(show['tracks']['items'][0]["id"])
     except:
